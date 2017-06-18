@@ -32,4 +32,4 @@
 ```
 ####  其他
 - react/redux 相关示例正在整理中，有兴趣的同学可以先前往gitHub上查看，后期会同步基础架构在码云上，
-- 示例配置 与上海同事结合boom发布系统发布结合，[Example](https://github.com/meibin08 "示例配置")
+- 示例配置的相关文件与boom发布系统,发布代码相结合，[Example](https://github.com/meibin08 "示例配置")
