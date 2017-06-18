@@ -20,18 +20,6 @@ function isRule(regText, value) {
 }
 
 module.exports = {
-  isIos:()=>{
-    let userAgent= navigator.userAgent;
-    let IsiOS = !!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    return IsiOS;
-  },
-  isFromWeixin: () => {
-    return UA.match(/MicroMessenger/i)
-  },
-  
-  isFromZA: () => {
-    return UA.match(/ZhongAnWebView/i)
-  },
 
   isMobile: (mobile) => {
     return isRule(MOBILE_REG, mobile)

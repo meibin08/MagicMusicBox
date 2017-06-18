@@ -1,16 +1,35 @@
 
 var config = require('../config.js');
 
+//获取设备信息;
+export const getSystem = (options)=>{
+	let systemInfo = wx.getStorageSync('systemInfo')||{}; 
+	wx.getSystemInfo({
+	  success: function(res) {
+	  	wx.setStorageSync('systemInfo',res);
+	    options.success&&options.success(res);
+	  },
+	  error:(err)=>{
+	  	options.error&&options.error(err);
+	  }
+	});
+};
 export const berichtenLogs = (options) => {//上报
 
 	let { url,  data} = options;
+	let userToken = wx.getStorageSync('userToken')||"";
+	let userInfo = wx.getStorageSync('userInfo')||{};
+	let systemInfo = wx.getStorageSync('systemInfo')||{}; 
+
 	let _data = Object.assign({},(data||{}),{
-			openid :"122", //token
+			openid :userToken, //token
 			ENV :config.ENV, //环境 
-			/*userAgent : navigator.userAgent,
-			all_cookie : document.cookie,
-			url : location.href*/
+			userAgent : systemInfo,
+			userInfo : userInfo,
+			/*url : location.href*/
 		});
+
+	let logs = ()=>{
 		wx.request({
 			url:`https://leancloud.cn/1.1/classes/${url}`,
 			method:"POST",
@@ -24,6 +43,20 @@ export const berichtenLogs = (options) => {//上报
 				console.log(url+"上报完成",res);
 			}
 		});
+	};
+	if(!Object.keys(systemInfo).length){
+		getSystem({
+			success:(data)=>{
+				_data.userAgent = data;
+				logs();
+			},
+			error:()=>{
+				logs();
+			}
+		})
+	}else{
+		logs();
+	};
 };
 
 // 异常日志上报  

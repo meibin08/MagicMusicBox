@@ -17,8 +17,8 @@ var config = {
     baseUrl:baseUrl[ENV||"prod"],
 
     //日志上报，所需的项目key、id
-    logsId:"NIOz3IxShfIh0flASQ94C4EJ-gzGzoHsz",
-    logsKey:"KFEiJEXzBaDNYOQhYWsUHEA1",
+    logsId:"qbP2l4mQhvv8e5BITvXu7jlW-gzGzoHsz",
+    logsKey:"rFfGUqa7NYUVkhAaEOc1MqaW",
 
 
 };

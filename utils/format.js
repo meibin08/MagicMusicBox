@@ -51,20 +51,6 @@ const format = {
 	  return;
 	}
 	return (parseInt(idCard.substr(16, 1)) % 2)
-  },
-  	//动态取title关键字
-  getKey(_props,type){
-  	let t = {
-		"I":{val:"身份证",link:"identity"},
-		"P":{val:"护照",link:"passport"},
-		"GA":{val:"港澳通行证",link:"gatePass"},
-		"TW":{val:"台湾通行证",link:"gatePass"},
-		"OTHER":{val:"",link:""},
-	};
-  	let {query}=_props.location;
-	let key = query&&query.certType||"OTHER";
-
-	return type ? t[key][type]:t[key];
   }
 };
 
