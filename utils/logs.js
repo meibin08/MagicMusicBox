@@ -1,50 +1,48 @@
 
-export const fetchLogs = (options) => {
+var config = require('../config.js');
 
-  // options.url = "/bbq"+options.url;
-  let { url,  data, ...others } = options;
-  let opts = {
-    ...others,
-    method: 'POST',
-    // credentials: 'include',
-    headers: {
-      'X-Avoscloud-Application-Id': 'NIOz3IxShfIh0flASQ94C4EJ-gzGzoHsz',
-        'X-Avoscloud-Application-Key':'KFEiJEXzBaDNYOQhYWsUHEA1',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-  }
-  if (['POST', 'PUT'].indexOf(opts.method.toUpperCase()) >= 0) {
-    let _data = Object.assign({},data,{
-      openid :"122", //token
-      ENV :location.origin, //环境 - 从域名来区分
-      userAgent : navigator.userAgent,
-      all_cookie : document.cookie,
-      url : location.href
-    });
-    opts.body = JSON.stringify(_data);
-  };
-  fetch("https://leancloud.cn/1.1/classes/"+`${url}`, opts);
+export const berichtenLogs = (options) => {//上报
+
+	let { url,  data} = options;
+	let _data = Object.assign({},(data||{}),{
+			openid :"122", //token
+			ENV :config.ENV, //环境 
+			/*userAgent : navigator.userAgent,
+			all_cookie : document.cookie,
+			url : location.href*/
+		});
+		wx.request({
+			url:`https://leancloud.cn/1.1/classes/${url}`,
+			method:"POST",
+			data:_data,
+			header:{
+				'X-Avoscloud-Application-Id': config.logsId,
+				'X-Avoscloud-Application-Key':config.logsKey,
+				'Content-Type': 'application/json'
+			},
+			success:(res)=>{
+				console.log(url+"上报完成",res);
+			}
+		});
 };
 
 // 异常日志上报  
 export const DebugLogs = (interfaces,detail)=>{
-  fetchLogs({
-    url:"DEBUG",
-    data:{
-      interfaces,
-      detail
-    }
-  });
+	berichtenLogs({
+		url:"DEBUG",
+		data:{
+			interfaces,
+			detail
+		}
+	});
 };
 // 错误日志上报
 export const ErrorLogs = (interfaces,detail)=>{
-  fetchLogs({
-    url:"ERROR",
-    data:{
-      interfaces,
-      detail
-    }
-  });
+	berichtenLogs({
+		url:"ERROR",
+		data:{
+			interfaces,
+			detail
+		}
+	});
 };
-
