@@ -1,10 +1,16 @@
+/*
+* @authors :Bin Mei
+* @date    :2017-06-20
+* @description：统一校验正则处理，
+*/
+
 
 const MOBILE_REG = /^1[3|4|5|8|7|9][0-9]\d{8}$/,
       EMAIL_REG = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/,
       MONEY_REG = /^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/,
       NAME_REG = /^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/,
       PWD_REG = /(\d(?!\d{5})|[A-Za-z](?![A-Za-z]{5})){6}/,
-      HKMACAO_REG = /^[HMhm]{1}([0-9]{10}|[0-9]{8})$/,
+      HKMACAO_REG = /^[CHMhm]{1}([0-9]{10}|[0-9]{8})$/,
       TAIWAN_REG = /^[0-9]{8,10}$/,
       UA = window.navigator.userAgent.toLowerCase();
 

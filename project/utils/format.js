@@ -1,3 +1,9 @@
+/*
+* @authors :Bin Mei
+* @date    :2017-06-20
+* @description：项目常用过滤器，
+*/
+
 import { isNotEmpty, isIdCard } from './validate';
 import Events from './events';
 

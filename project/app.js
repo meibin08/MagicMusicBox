@@ -17,7 +17,7 @@ App({
       //调用登录接口
       getUserLogin({
         success:res=>{
-          // console.log(res);
+          console.log(res);
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }

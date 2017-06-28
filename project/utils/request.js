@@ -1,5 +1,11 @@
+/*
+* @authors :Bin Mei
+* @date    :2017-06-20
+* @description：接口请求封装，统一处理项目登录流程，
+*/
 
 import {DebugLogs,ErrorLogs} from "./logs.js";
+import Store from "./storage.js";
 var config = require('../config.js');
 var userToken = "",userInfo={};
 
@@ -35,8 +41,9 @@ export const getUserInfo = (options)=>{
 	wx.getUserInfo({
 		success:  (resInfo) =>{
 			userInfo = resInfo.userInfo//保存用户信息
-			wx.setStorageSync('userInfo',userInfo);
+			Store.set('userInfo',userInfo);
 			getUserToken(options);
+			// options.success&&options.success(userInfo)
 		},
 		fail:  (failInfo)=> {
 			//console.error('wx.getUserInfo error:' + failInfo.errMsg);
@@ -48,30 +55,36 @@ export const getUserInfo = (options)=>{
 };
 //获取token
 export const getUserToken = (options)=>{
-	let userInfo = (wx.getStorageSync('userInfo')||{});
-	sendRequest({
-		url:"/api/token",
-		type:"POST",
-		data:userInfo,
-		success:res=>{
-			let {result} = res;
-			wx.setStorageSync('userToken',result.token);
-			result.userInfo = Object.assign({},result,userInfo);
-			options.success&&options.success(result);
-		},error:err=>{
-			options.error&&options.error(err);
-			console.log(res);
-		}
-	});
+	let userInfo = (Store.get('userInfo')||{});
+	let userToken = Store.get('userToken')||"";
+
+	if(userToken && Object.keys(userInfo).length){
+		options.success&&options.success(Object.assign({},{token:userToken,userInfo:userInfo}));
+	}else{
+		sendRequest({
+			url:"/api/token",
+			type:"POST",
+			data:userInfo,
+			success:res=>{
+				let {result} = res;
+				Store.set('userToken',result.token,config.token_expires);
+				console.log(Store.get('userToken'))
+				result.userInfo = Object.assign({},result,userInfo);
+				options.success&&options.success(result);
+			},error:err=>{
+				options.error&&options.error(err);
+				console.log(res);
+			}
+		});
+	};
+	
 }
-
-
 
 export const sendRequest = (options) => {//上报
 
 	options.url = config.baseUrl+options.url;
 	let { url,type , data} = options;
-	let userToken = wx.getStorageSync('userToken')||"";
+	let userToken = Store.get('userToken')||"";
 	showLoading();
 	wx.request({
 		url:url,
@@ -95,7 +108,7 @@ export const sendRequest = (options) => {//上报
 };
 
 export const RequestJson = (options) =>{
-	let userToken = wx.getStorageSync('userToken')||"";
+	let userToken = Store.get('userToken')||"";
 	if(userToken == ""){
 		getUserLogin({
 			success:(data)=>{
@@ -116,9 +129,12 @@ function resHandler(resData, options) {
 	 errorHandler(resData, options, resData.statusCode);
 	 return;
   };
-  if (!resData || resData.code > 10000) {
+  if(resData&&resData.data.code == 20002){ //未登录｜｜登录失效
+
+	RequestJson(options);
+  }else if(!resData || resData&&resData.data.code > 20000) {
 	options.error && options.error(resData)
-	showToast(resData.errMsg);
+	showToast(resData.data.message);
   } else {
 	options.success && options.success(resData.data);
   };
@@ -139,10 +155,17 @@ function showLoading(options) {
 	  title: (options&&options.title||"加载中"),
 	});
 };
-function showToast(errMsg){
+function showToast(errMsg,callback){
 	wx.showModal({
 	  title: '提示',
 	  showCancel:false,
 	  content: errMsg,
+	  success: (res) =>{
+	    if (res.confirm) {
+	      callback&&callback(res);
+	    } else if (res.cancel) {
+	      callback&&callback(res);
+	    }
+	  }
 	});
 }

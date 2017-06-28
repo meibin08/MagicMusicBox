@@ -1,9 +1,9 @@
-/**
- * 小程序配置文件
- */
+/*
+* @authors :Bin Mei
+* @date    :2017-06-20
+* @description：小程序项目配置文件
+*/
 
-// 此处主机域名是腾讯云解决方案分配的域名
-// 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
 var ENV = "mock";
 var baseUrl ={
@@ -20,6 +20,11 @@ var config = {
     logsId:"qbP2l4mQhvv8e5BITvXu7jlW-gzGzoHsz",
     logsKey:"rFfGUqa7NYUVkhAaEOc1MqaW",
 
+    //建议每次发布更改版本号、可考虑用于缓存清理
+    version:"0.0.1",
+
+    //可以在这里统一设置token过期时间,默认120分钟
+    token_expires:120
 
 };
 

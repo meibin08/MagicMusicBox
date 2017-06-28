@@ -1,8 +1,8 @@
 //index.js
 //获取应用实例
 import {RequestJson} from "../../utils/request.js";
+import Store from "../../utils/storage.js";
 var config = require('../../config.js');
-
 
 
 var app = getApp()
@@ -18,7 +18,6 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){
@@ -27,6 +26,8 @@ Page({
         userInfo:userInfo
       })
     });
+    // Store.set("test",1234,2)
+    Store.remove("test");
     
     RequestJson({
       url:"/api/tokens",

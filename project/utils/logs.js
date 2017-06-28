@@ -1,3 +1,8 @@
+/*
+* @authors :Bin Mei
+* @date    :2017-06-20
+* @description：项目接口异常信息日志上报，
+*/
 
 var config = require('../config.js');
 
