@@ -2,7 +2,9 @@
 
 ### 使用说明 ：
 	- 请稳步wiki文档页查看,
-#### -[wiki使用说明](https://github.com/meibin08/gulp-wechat-weapp/wiki "使用说明")
+	
+#### -[wiki使用说明](https://github.com/meibin08/gulp-wechat-weapp/wiki "使用说明 @IT·平头哥联盟")
+#### -[@IT·平头哥联盟](https://honeybadger8.github.io/blog/ "@IT·平头哥联盟-首席填坑官∙苏南")
 
 ### 已完成功能列表：
 
@@ -40,11 +42,12 @@
 
 ****
 
+## 技术交流
+- 群：912594095、[386485473](https://shang.qq.com/wpa/qunwpa?idkey=d44baf17512787eb0e4f268849a3239d6b9675145a606e21b9a055176bd1c0e2 "React\redux技术交流群")
+- 博客：[@IT·平头哥联盟](https://honeybadger8.github.io/blog/ "@IT·平头哥联盟-首席填坑官∙苏南")
+
 ## 安装依赖包
 - npm install
 
 ## 开发环境 -scss监听
 - npm run gulps
-
-## React\redux技术交流群 --但也不仅仅局限于此哦~
-- 群：[386485473](https://shang.qq.com/wpa/qunwpa?idkey=d44baf17512787eb0e4f268849a3239d6b9675145a606e21b9a055176bd1c0e2 "React\redux技术交流群")
