@@ -1,0 +1,8 @@
+@import 'src/style/index';
+
+.anticon[custom-label='cube'] {
+  fill: currentcolor;
+  overflow: hidden;
+  color: $base-submodule-bg-color;
+  font-size: 20px;
+}

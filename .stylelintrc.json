@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "indentation": 2,
+    "scss/dollar-variable-pattern": null,
+    "scss/no-global-function-names":null,
+    "no-duplicate-selectors":null,
+    "alpha-value-notation": null,
+    "max-line-length": [180]
+  }
+}

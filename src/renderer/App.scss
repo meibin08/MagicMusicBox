@@ -1,0 +1,58 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '@/src/style/app';
+@import '@/src/style/index';
+$prefixCls: 'app-container';
+
+.app-vague-bg {
+  background-color: #161824;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.5);
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  background-image: url(https://i.loli.net/2019/11/17/GAYyzeKsiWjP5qO.jpg);
+  opacity: 0.9;
+  filter: blur(40px);
+  &::before {
+    // background: url(https://i.loli.net/2019/11/17/GAYyzeKsiWjP5qO.jpg);
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+.#{$prefixCls} {
+  width: 100%;
+  height: 100%;
+  @include display-flex;
+  flex-direction: column;
+  background: linear-gradient(200.96deg, #00d2ff, #3a7bd5);
+  &__layout {
+    @include display-flex;
+    @include flex;
+  }
+  &__outlet {
+    // background-color: #252525;
+    // background-color: darken($window-color, 2.5%);
+    // background-color: hsla(var(--window-color), 2.5%);
+    background-color: rgba($color: #000000, $alpha: 0.08);
+    height: 100%;
+    @include flex;
+    backdrop-filter: blur(40px);
+  }
+}

@@ -1,0 +1,47 @@
+@use 'sass:math';
+@function derive-rgb-values-from-hex($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+$window-color: #2b2b2b; //窗口背景
+$base-font-color: rgba(255, 255, 255, 1);
+
+:root {
+  --window-primary-color: #d13c37;
+  --window-background-color: #{$window-color}; //窗口背景
+  --window-color: $window-color; //窗口背景
+  --window-hd-background-color: #{lighten($window-color, 5%)}; //窗口头部导航背景
+
+  --window-sidebar-text-color: #{lighten($window-color, 52.5%)}; //左侧边栏
+  --window-sidebar-hover-color: #{darken($window-color, 90%)}; //左侧边栏
+  --hover-background-color: #{rgba($color: $base-font-color, $alpha: 0.1)}; // 元素hover背景底色
+  --heading-color: #{rgba($color: $base-font-color, $alpha: 0.85)}; // 标题色
+  --text-color: #{rgba($color: $base-font-color, $alpha: 0.65)}; // 主文本色
+  --text-color-secondary: #{rgba($color: $base-font-color, $alpha: 0.45)}; // 次文本色
+}
+
+$browser-default-font-size: 14;
+$browser-default-font-size-px: 14px !default;
+
+$base-background-color: #252525; // 页面背景
+$base-submodule-bg-color: #333642; // lighten($base-background-color, 10%); //次模块背景
+$base-border-color: #565555;
+$base-submodule-bd-color: #474953; //  rgba(240, 240, 240, .1);//次模块边框
+$base-primary-color: #d13c37;
+$link-color: $base-font-color; // 链接色
+$font-size-base: 13px; // 主字号
+$heading-color: rgba(
+  $color: $base-font-color,
+  $alpha: 0.85,
+); // 标题色
+$text-color: rgba(
+  $color: $base-font-color,
+  $alpha: 0.65,
+); // 主文本色
+$text-color-secondary: rgba(
+  $color: $base-font-color,
+  $alpha: 0.45,
+); // 次文本色
+$color-text-base: $base-font-color; // 文字的基本色
+
+// $custom-component-background: #444857;
+// $base-border-color: rgba(232, 232, 232, 1);

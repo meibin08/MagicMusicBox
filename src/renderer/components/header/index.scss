@@ -1,0 +1,71 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '@/src/style/index';
+$prefixCls: 'app-header';
+
+.#{$prefixCls} {
+  // background-color: var(--window-background-color);
+  padding: 16px 0px 10px 125px;
+  // -webkit-app-region: drag;
+  line-height: 24px;
+  @include display-flex;
+  @include justify-content(space-between);
+  @include align-items(center);
+  backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba($color: #fff, $alpha: 0.3);
+  background-color: rgba($color: #000000, $alpha: 0.1);
+  &__icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    color: var(--heading-color);
+    font-size: 16px;
+    margin-left: 12px;
+    @include display-flex;
+    transition: background-color 0.2s, transform 0.3s;
+    @include align-items(center);
+    @include justify-content(center);
+    &:hover {
+      background-color: var(--hover-background-color);
+      svg {
+        transform: scale(0.88);
+      }
+    }
+  }
+  &__history {
+    .anticon {
+      font-size: 15px;
+    }
+  }
+  &__col {
+    padding: 0 10px;
+    @include display-flex;
+  }
+  &__badge {
+    sup {
+      transform: scale(0.8) translate(3px, -3px);
+      box-shadow: none;
+    }
+  }
+  &__nav {
+    @include flex;
+    font-size: 14px;
+    .nav-item {
+      margin-left: 26px;
+      color: var(--text-color);
+      transition: color 0.2s;
+      &.active {
+        color: #fff;
+        font-weight: 500;
+        text-shadow: 0 1px 3px var(--text-color-secondary);
+      }
+      &:hover {
+        color: var(--header-color);
+        text-shadow: 0 1px 3px var(--hover-background-color);
+      }
+    }
+  }
+}

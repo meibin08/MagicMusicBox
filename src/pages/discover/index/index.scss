@@ -1,0 +1,42 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '@/src/style/index';
+$prefixCls: 'app-discovers';
+$carouselPrefixCls: 'carousel-component';
+.#{$prefixCls} {
+  padding: 20px 30px;
+  &__title {
+    padding: 20px 0 12px;
+    line-height: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    .icon {
+      margin-left: 2px;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, 135px);
+    grid-template-rows: repeat(5, 135px);
+    grid-row-gap: 10px;
+    grid-column-gap: 20px;
+    .row-col {
+      // width: 20%;
+      border-radius: 6px;
+      background-color: #000;
+
+      p {
+        height: 135px;
+      }
+    }
+  }
+}
+.#{$carouselPrefixCls} {
+  height: 200px;
+  margin-bottom: 22px;
+  border-radius: 2px;
+  background-color: rgba($color: #fff, $alpha: 0.3);
+}
