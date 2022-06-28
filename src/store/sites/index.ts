@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {SitesState} from './type';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SitesState } from './type';
 
 const initialState: SitesState = {
   sitePageDetail: {
@@ -47,7 +47,7 @@ export const SiteSlice = createSlice({
     },
   },
 });
-const {selectedComponentId} = SiteSlice.actions;
-export {selectedComponentId};
-export const actions = SiteSlice.actions;
+const { selectedComponentId } = SiteSlice.actions;
+export { selectedComponentId };
+export const { actions } = SiteSlice;
 export default SiteSlice.reducer;

@@ -44,8 +44,11 @@ const configuration: webpack.Configuration = {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     alias: {
       '@/src': webpackPaths.srcPath,
-      '@/store': path.resolve(webpackPaths.srcPath, 'store'),
-      '@/utils': path.resolve(webpackPaths.srcPath, 'utils'),
+      '@/store': path.join(webpackPaths.srcPath, 'store'),
+      '@/store/*': path.join(webpackPaths.srcPath, 'store/*'),
+      '@/utils': path.join(webpackPaths.srcPath, 'utils'),
+      '@/components': path.join(webpackPaths.srcPath, 'components'),
+      '@/api': path.join(webpackPaths.srcPath, 'api'),
       // 'react-dom': '@hot-loader/react-dom',
     },
     modules: [webpackPaths.srcPath, 'node_modules'],

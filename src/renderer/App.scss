@@ -37,22 +37,28 @@ $prefixCls: 'app-container';
   }
 }
 .#{$prefixCls} {
-  width: 100%;
-  height: 100%;
+  width: var(--window-width);
+  height: var(--window-height);
+  // height: 100%;
   @include display-flex;
   flex-direction: column;
   background: linear-gradient(200.96deg, #00d2ff, #3a7bd5);
   &__layout {
     @include display-flex;
     @include flex;
+    height: var(--window-layout-height);
   }
   &__outlet {
     // background-color: #252525;
     // background-color: darken($window-color, 2.5%);
     // background-color: hsla(var(--window-color), 2.5%);
-    background-color: rgba($color: #000000, $alpha: 0.08);
+    background-color: rgba($color: #000000, $alpha: 0.2);
     height: 100%;
+    // height: var(--window-layout-height);
+    // overflow: visible;
+    // overflow-y: auto;
     @include flex;
+
     backdrop-filter: blur(40px);
   }
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 // import type { RouteObject } from 'react-router-dom';
 import AsyncImportLoadable from '@/src/router/loading';
 import { uuid } from '@/utils/tools';
@@ -25,7 +26,7 @@ const AppDiscoverNewMusic = AsyncImportLoadable(
 
 const route = [
   {
-    path: '/discover', //个性推荐
+    path: '/discover', // 个性推荐
     children: [
       {
         index: true,

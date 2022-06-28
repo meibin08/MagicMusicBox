@@ -1,25 +1,23 @@
 /*
- * @authors :Bin Mei
- * @date    :2019-03-20
+ * @authors :su south
+ * @date    :2022-06-22
  * @description：Fetch请求处理
  */
 import promise from 'es6-promise';
 import isomorphicFetch from 'isomorphic-fetch';
-import { StaticToast, StaticLoading } from '@cube-src/components/common';
+// import { StaticToast, StaticLoading } from '@/src/components/common';
 import { Serialize } from './serialization';
 // import { Loading } from 'zarm';
-import storage from './storage';
 
 promise.polyfill();
 declare const window: any;
-// declare const wx: any;
 
 interface Options {
   url: string;
   type: string;
   data?: object;
   action?: any;
-  isloading?: boolean;
+  needLoading?: boolean;
   headers?: object;
   error?: any;
   success?: any;
@@ -28,31 +26,32 @@ interface Options {
 }
 
 export const fetch = (options: Options) => {
-  const { url = '', type, data, isloading = true } = options;
-  isloading && StaticLoading.show();
+  const { url = '', type, data, needLoading = true } = options;
+  // isloading && StaticLoading.show();
   // const { url = '', type, data } = options;
+  const params = { ...data, realIP: '211.161.244.70' };
   const opts: any = {
+    url,
     credentials: 'include',
-    url: url,
     headers: {
-      token: storage.get('token'),
+      // Host: "music.163.com",
       ...options.headers,
+      Accept: 'application/json',
     },
   };
   if (type.toUpperCase() === 'GET') {
     opts.method = 'GET';
     if (typeof data === 'string') {
-      opts.url = `${url}?${data}`;
+      opts.url = `${url}?${params}`;
     } else if (typeof data === 'object') {
-      opts.url = `${url}?${Serialize(data)}`;
+      opts.url = `${url}?${Serialize(params)}`;
     }
   }
   if (type.toUpperCase() === 'POST') {
     opts.method = 'POST';
-    opts.body = JSON.stringify(data || {});
+    opts.body = JSON.stringify(params || {});
     opts.headers = {
       ...opts.headers,
-      'Content-Type': 'application/json; charset=UTF-8',
     };
   }
   if (type.toUpperCase() === 'UPLOAD') {
@@ -60,7 +59,7 @@ export const fetch = (options: Options) => {
     opts.body = data;
   }
 
-  return isomorphicFetch(opts.url, opts)
+  return isomorphicFetch(`https://magic-music-api.vercel.app${opts.url}`, opts)
     .then((req) => toJson(req, options))
     .then((res) => resHandler(res, options))
     .catch(() => {});
@@ -79,12 +78,11 @@ export async function fetchJson(options: Options) {
 
 // 请求成功处理
 function resHandler(res: any, options: any) {
-  const { isloading = true } = options;
-  isloading && StaticLoading.hide();
+  const { needLoading = true } = options;
+  // isloading && StaticLoading.hide();
   if (res.code === '20002') {
     const { pathname } = window.location;
     window.location.replace(pathname);
-
     return Promise.resolve({ code: 9999 });
   }
   if (res.status && res.status !== 200) {
@@ -92,7 +90,7 @@ function resHandler(res: any, options: any) {
   }
   if (!res || res.code >= 20000) {
     options.error && options.error(res);
-    StaticToast.error(res.message || '服务异常');
+    // StaticToast.error(res.message || '服务异常');
     return Promise.resolve(res);
   }
   options.success && options.success(res);
@@ -101,9 +99,9 @@ function resHandler(res: any, options: any) {
 
 // 异常处理
 function errorHandler(error: any, options: any, status?: any) {
-  const { isloading = true } = options;
-  isloading && StaticLoading.hide();
+  const { needLoading = true } = options;
+  // isloading && StaticLoading.hide();
   options.error && options.error(error);
-  StaticToast.error(`网络异常，请稍后重试${status ? `(${status})` : ''}`);
-  return Promise.reject(error);
+  // StaticToast.error(`网络异常，请稍后重试${status ? `(${status})` : ''}`);
+  return error;
 }

@@ -1,7 +1,8 @@
+import React from 'react';
 import { clsPrefix } from '@/utils/serialization';
 import { Avatar } from 'antd';
 import { RightOutlined, HeartOutlined } from '@ant-design/icons';
-import { CustomLink } from '@/src/components';
+import { CustomLink,FakeScrollComponent } from '@/src/components';
 import { NavLink } from "react-router-dom";
 
 import menuConfig, { mineMusic } from './config';
@@ -12,7 +13,7 @@ const prefixCls = 'app-sidebar';
 const clsName = clsPrefix(prefixCls);
 const AppSidebarComponent = () => {
   return (
-    <div className={prefixCls}>
+    <FakeScrollComponent className={prefixCls}>
       <section className={clsName('user')}>
         <Avatar className="avatar" size={40}>
           M
@@ -66,7 +67,7 @@ const AppSidebarComponent = () => {
           </CustomLink>
         </li>
       </ul>
-    </div>
+    </FakeScrollComponent>
   );
 };
 export default AppSidebarComponent;

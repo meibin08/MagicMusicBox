@@ -20,7 +20,7 @@ const routes: RouteObject[] = [
       ...DiscoverRoute,
       { index: true, element: <Navigate to="/discover" replace /> },
       {
-        path: '/test',
+        path: '/test6',
         element: <AppTest />,
       },
     ],

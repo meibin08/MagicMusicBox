@@ -1,13 +1,15 @@
-import { clsPrefix } from '@/utils/serialization';
+import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Input, Badge } from 'antd';
+import { clsPrefix } from '@/utils/serialization';
 
 import './index.scss';
 
-const AppHeaderComponent = (props: { prefixCls?: string }): JSX.Element => {
-  const { prefixCls = '' } = props;
+interface Props {
+  prefixCls: string;
+}
+const AppHeaderComponent = ({ prefixCls }: Props) => {
   const clsName = clsPrefix(prefixCls);
-
   return (
     <>
       <Input
@@ -19,4 +21,5 @@ const AppHeaderComponent = (props: { prefixCls?: string }): JSX.Element => {
     </>
   );
 };
+
 export default AppHeaderComponent;

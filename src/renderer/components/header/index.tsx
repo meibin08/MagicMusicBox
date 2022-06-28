@@ -1,5 +1,4 @@
-import { clsPrefix } from '@/utils/serialization';
-import { MusicIcon, CustomLink } from '@/src/components';
+import React from 'react';
 import {
   LeftOutlined,
   RightOutlined,
@@ -9,6 +8,8 @@ import {
   MailOutlined,
 } from '@ant-design/icons';
 import { Badge } from 'antd';
+import { clsPrefix } from '@/utils/serialization';
+import { MusicIcon, CustomLink } from '@/src/components';
 import HeaderSearchComponent from '../search';
 import HeaderCoreNavComponent from './nav';
 
@@ -16,7 +17,7 @@ import './index.scss';
 
 const prefixCls = 'app-header';
 const clsName = clsPrefix(prefixCls);
-const AppHeaderComponent = () => {
+const AppHeaderComponent: () => JSX.Element = () => {
   return (
     <div className={prefixCls}>
       <div className={clsName('history', 'col')}>

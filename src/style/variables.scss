@@ -6,14 +6,22 @@ $window-color: #2b2b2b; //窗口背景
 $base-font-color: rgba(255, 255, 255, 1);
 
 :root {
+  --window-width: 1002px;
+  --window-height: 670px;
+  --window-header-height: 50px;
+  --window-songsbar-height: 60px;
+  --window-layout-height: calc(
+    var(--window-height) - var(--window-header-height)
+  );
+
   --window-primary-color: #d13c37;
   --window-background-color: #{$window-color}; //窗口背景
   --window-color: $window-color; //窗口背景
   --window-hd-background-color: #{lighten($window-color, 5%)}; //窗口头部导航背景
-
   --window-sidebar-text-color: #{lighten($window-color, 52.5%)}; //左侧边栏
   --window-sidebar-hover-color: #{darken($window-color, 90%)}; //左侧边栏
-  --hover-background-color: #{rgba($color: $base-font-color, $alpha: 0.1)}; // 元素hover背景底色
+  --hover-color: #{rgba($color: $base-font-color, $alpha: 0.1)}; // 元素hover背景底色
+  --hover-secondary-color: #{rgba($color: $base-font-color, $alpha: 0.05)}; // 次 hover色
   --heading-color: #{rgba($color: $base-font-color, $alpha: 0.85)}; // 标题色
   --text-color: #{rgba($color: $base-font-color, $alpha: 0.65)}; // 主文本色
   --text-color-secondary: #{rgba($color: $base-font-color, $alpha: 0.45)}; // 次文本色

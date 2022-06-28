@@ -48,12 +48,6 @@
   align-self: $value;
 }
 
-/* 内容垂直居中*/
-.typography-vertical {
-  @include display-flex;
-  // @include justify-content(space-between);
-  @include align-items(center);
-}
 // @mixin alpha($property, $color-variable, $opacity) {
 //   $color-variable-h: var(#{$color-variable + '-h'});
 //   $color-variable-s: var(#{$color-variable + '-s'});

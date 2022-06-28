@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import { CustomLink } from '@/src/components';
 import { discoverHeaderNav } from '@/src/pages/discover/route';
-import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const navConfig = {

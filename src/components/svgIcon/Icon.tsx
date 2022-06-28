@@ -1,3 +1,4 @@
+import React from 'react';
 import { createFromIconfontCN } from '@ant-design/icons';
 
 const MusicIcon = createFromIconfontCN({
@@ -6,12 +7,12 @@ const MusicIcon = createFromIconfontCN({
     'custom-label': 'music',
   },
 });
-type IconBaseProps = {
+interface IconBaseProps {
   rotate: number;
   spin: boolean;
   style: React.CSSProperties;
   type: string;
-};
+}
 export default (props: IconBaseProps) => {
   const { type, ...other } = props;
   return <MusicIcon type={`icon-${type}`} {...other} />;

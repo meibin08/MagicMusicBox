@@ -29,7 +29,7 @@ $prefixCls: 'app-header';
     @include align-items(center);
     @include justify-content(center);
     &:hover {
-      background-color: var(--hover-background-color);
+      background-color: var(--hover-color);
       svg {
         transform: scale(0.88);
       }

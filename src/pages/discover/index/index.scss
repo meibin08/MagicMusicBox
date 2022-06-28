@@ -20,23 +20,173 @@ $carouselPrefixCls: 'carousel-component';
   &__list {
     display: grid;
     grid-template-columns: repeat(5, 135px);
-    grid-template-rows: repeat(5, 135px);
-    grid-row-gap: 10px;
+    grid-template-rows: repeat(2, 185px);
+    grid-row-gap: 35px;
     grid-column-gap: 20px;
-    .row-col {
-      // width: 20%;
-      border-radius: 6px;
-      background-color: #000;
-
-      p {
-        height: 135px;
+    .row-category {
+      .category-header {
+        @include display-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        padding: 5px 6px;
+        color: var(--heading-color);
+        position: relative;
+        z-index: 4;
+        .play-total {
+          font-size: 12px;
+        }
+      }
+      &:hover {
+        .category-header {
+          color: #fff;
+        }
+      }
+    }
+    /*每日推荐歌曲*/
+    .daily-songs {
+      .cover {
+        @extend %typography__absolute-foursides;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          max-width: 300px;
+          height: 300px;
+          -webkit-animation: move-dailySongs 38s infinite;
+          animation: move-dailySongs 38s infinite;
+          -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+          filter: drop-shadow(10);
+        }
+      }
+      .calendar {
+        @include absolute-center;
+        .anticon {
+          font-size: 100px;
+          color: var(--text-color);
+        }
+        .today {
+          left: 0;
+          right: 0;
+          position: absolute;
+          top: 32px;
+          text-align: center;
+          color: #fff;
+          font-size: 40px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  /*最新音乐*/
+  &__news-music {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(5, 79px);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    .column-item {
+      position: relative;
+      background-color: rgba($color: #fff, $alpha: 0.04);
+      border-radius: 4px;
+      border: 0.5px solid var(--hover-color);
+      padding: 10px;
+      transition: border-color 0.2s, background-color 0.3s, box-shaow 0.3s;
+      @extend %typography__vertical;
+      &::before {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        bottom: 5px;
+        content: '';
+        width: 0;
+        display: block;
+        border: 3px solid transparent;
+        transition: border-color 0.5s;
+        z-index: 0;
+      }
+      .shadow {
+        transform: scale(1);
+      }
+      &:hover {
+        background-color: var(--hover-color);
+        border-color: var(--text-color);
+        box-shadow: 0 0 3px var(--text-color-secondary);
+        &::before {
+          border-left-color: var(--heading-color);
+        }
+        .shadow {
+          opacity: 0.5;
+        }
+      }
+      .music-cover {
+        position: relative;
+        width: 85px;
+        height: 60px;
+        border-radius: 5px;
+        overflow: hidden;
+        .play {
+          border-radius: 5px;
+          .anticon {
+            font-size: 13px;
+          }
+        }
+      }
+      .serialnum {
+        width: 33px;
+        text-align: center;
+        color: var(--text-color-secondary);
+        font-size: 14px;
+      }
+      .song-title {
+        font: {
+          size: 15px;
+          weight: 600;
+        }
+        line-height: 24px;
+      }
+      .song-author {
+        color: var(--text-color-secondary);
       }
     }
   }
 }
+
 .#{$carouselPrefixCls} {
-  height: 200px;
-  margin-bottom: 22px;
-  border-radius: 2px;
-  background-color: rgba($color: #fff, $alpha: 0.3);
+  padding-bottom: 35px;
+  &__body {
+    border-radius: 6px;
+    width: 540px;
+    margin: 0 auto;
+    background-color: rgba($color: #fff, $alpha: 0.3);
+    overflow: hidden;
+  }
+  &__item {
+    height: 200px;
+    border-radius: 5px;
+    img {
+      height: 200px;
+      border-radius: 6px;
+    }
+  }
+}
+
+@-webkit-keyframes move-dailySongs {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  33% {
+    transform: translate3d(0, -135px, 0);
+  }
+  66% {
+    transform: translate3d(-135px, -135px, 0);
+  }
+  100% {
+    transform: translate3d(-135px, 0, 0);
+  }
 }

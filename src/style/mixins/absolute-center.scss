@@ -2,8 +2,15 @@
  * 元素居中定位
  */
 @mixin absolute-center($pos: absolute) {
-	position: $pos;
-	top: 50%;
-	left: 50%;
-transform: translate(-50%, -50%);
+  position: $pos;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin absolute-foursides($pos: absolute, $top: 0,  $left: 0,$right: 0,  $bottom: 0,) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
 }

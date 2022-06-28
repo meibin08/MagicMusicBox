@@ -7,15 +7,21 @@ $prefixCls: 'app-header';
 
 .#{$prefixCls} {
   // background-color: var(--window-background-color);
-  padding: 16px 0px 10px 125px;
   // -webkit-app-region: drag;
+  height: var(--window-header-height);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 99;
+  padding: 16px 0px 10px 125px;
   line-height: 24px;
   @include display-flex;
   @include justify-content(space-between);
   @include align-items(center);
   backdrop-filter: blur(20px);
   border-bottom: 0.5px solid rgba($color: #fff, $alpha: 0.3);
-  background-color: rgba($color: #000000, $alpha: 0.1);
+  background-color: rgba($color: #fff, $alpha: 0.3);
   &__icon {
     width: 24px;
     height: 24px;
@@ -29,7 +35,7 @@ $prefixCls: 'app-header';
     @include align-items(center);
     @include justify-content(center);
     &:hover {
-      background-color: var(--hover-background-color);
+      background-color: var(--hover-color);
       svg {
         transform: scale(0.88);
       }
@@ -64,7 +70,7 @@ $prefixCls: 'app-header';
       }
       &:hover {
         color: var(--header-color);
-        text-shadow: 0 1px 3px var(--hover-background-color);
+        text-shadow: 0 1px 3px var(--hover-color);
       }
     }
   }

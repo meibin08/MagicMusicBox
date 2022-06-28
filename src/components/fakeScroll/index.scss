@@ -1,0 +1,16 @@
+@import 'src/style/index';
+$prefixCls: 'fakescroll-component';
+.#{$prefixCls} {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__sticky {
+    display: block;
+    flex-basis: 100%;
+    height: var(--window-header-height);
+    width: 100%;
+  }
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

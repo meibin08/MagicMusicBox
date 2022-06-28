@@ -1,0 +1,40 @@
+@import 'src/style/index';
+
+.anticon[custom-label='cube'] {
+  fill: currentcolor;
+  overflow: hidden;
+  color: $base-submodule-bg-color;
+  font-size: 20px;
+}
+
+.skeleton-placeholder-icon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
+  @extend %typography__vh;
+  z-index: -1;
+  .anticon {
+    font-size: 45px;
+    color: #fff;
+  }
+  &.shadow {
+    position: absolute;
+    top: 12px;
+    height: 100%;
+    width: 100%;
+    filter: blur(25px) opacity(0.6);
+    transform: scale(0.92, 0.96);
+    z-index: -1;
+    background-size: cover;
+    aspect-ratio: 1/1;
+    transition: all 0.3s;
+    opacity: 0;
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.02, 1.08);
+    }
+  }
+}

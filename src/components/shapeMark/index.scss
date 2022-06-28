@@ -1,0 +1,40 @@
+@import 'src/style/index';
+$prefixCls: 'shap-component';
+.#{$prefixCls} {
+  &__core {
+    cursor: pointer;
+    height: 135px;
+    border-radius: 8px;
+    background-color: var(--text-color-secondary);
+    background-size: 100%;
+    position: relative;
+  }
+  &__extra {
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 22px;
+    padding: 2px 0;
+    color: var(--heading-color);
+  }
+  @at-root #{&} {
+    &:hover {
+      & + &__extra {
+        color: #000;
+      }
+    }
+  }
+  &:hover {
+    .shadow {
+      opacity: 0.6;
+      transform: scale(1.02, 1.06);
+    }
+    .#{$prefixCls} {
+      &__extra {
+        color: #fff;
+      }
+    }
+    .play-mark {
+      opacity: 1;
+    }
+  }
+}

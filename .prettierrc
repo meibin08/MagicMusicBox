@@ -1,0 +1,11 @@
+{
+  "printWidth": 600,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "jsxBracketSameLine": false,
+  "semi": true,
+  "bracketSpacing": true,
+  "react/jsx-tag-spacing": true,
+  "arrowParens": "always"
+}

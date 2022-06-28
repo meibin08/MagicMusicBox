@@ -10,3 +10,13 @@ export type ThunkAppDispatch = ThunkDispatch<
 export const useAppDispatch = () => useDispatch<ThunkAppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootApplicationState> =
   useSelector;
+
+/*
+export const useRootSelector: <
+  TState = RootApplicationState,
+  TSelected = unknown
+>(
+  selector: (state: TState) => TSelected,
+  equalityFn?: (left: TSelected, right: TSelected) => boolean
+) => TSelected = useSelector;
+*/

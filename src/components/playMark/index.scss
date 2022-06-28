@@ -1,0 +1,67 @@
+@import 'src/style/index';
+$prefixCls: 'playmark-component';
+.#{$prefixCls} {
+  @extend %typography__absolute-foursides;
+  @extend %typography__vh;
+  transition: opacity 0.3s;
+  border-radius: 8px;
+  background-image: radial-gradient(
+    circle,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5)
+  );
+  opacity: 0;
+  z-index: 3;
+  &__radius-bg {
+    width: 28%;
+    height: 28%;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+    backdrop-filter: blur(10px);
+    padding-left: 3px;
+    text-align: center;
+    position: relative;
+    @extend %typography__vh;
+    &::before,
+    &::after {
+      box-sizing: inherit;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 100%;
+      border: 0 solid transparent;
+    }
+    &::before {
+      border: 1px solid transparent;
+    }
+  }
+  .anticon {
+    font-size: 2rem;
+    color: #fff;
+  }
+  &:hover {
+    $blue: #fff;
+    opacity: 1;
+
+    .#{$prefixCls}__radius-bg {
+      &::before {
+        border-top-color: $blue; // Show borders
+        border-right-color: $blue;
+        border-bottom-color: $blue;
+        transition: border-top-color 0.15s linear,
+          border-right-color 0.15s linear 0.1s,
+          border-bottom-color 0.15s linear 0.2s;
+      }
+      &::after {
+        border-top: 1px solid $blue;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        transform: rotate(270deg);
+        transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
+      }
+    }
+  }
+}

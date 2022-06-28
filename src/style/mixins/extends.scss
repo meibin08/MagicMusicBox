@@ -1,0 +1,17 @@
+%typography {
+  /* 内容垂直居中*/
+  &__vertical {
+    @include display-flex;
+    // @include justify-content(space-between);
+    @include align-items(center);
+  }
+  /*水平+垂直居中*/
+  &__vh {
+    @extend %typography__vertical;
+    @include justify-content(center);
+  }
+  /* 定位四边 */
+  &__absolute-foursides {
+    @include absolute-foursides;
+  }
+}
