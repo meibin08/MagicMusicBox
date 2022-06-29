@@ -14,3 +14,7 @@ export const formatNumUnit = (value: number) => {
     units[logarithm]
   }`;
 };
+
+export const addZero = (value: number) => {
+  return value < 10 ? `0${value}` : value;
+};

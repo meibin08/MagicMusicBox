@@ -29,15 +29,14 @@ export const getBannerList = (type = 0) => {
 };
 
 /* 最新音乐*/
-export const getNewestList = (type = 0) => {
+export const getLatestMusictList = (type = 0) => {
   return fetchJson({
     // url: `/album/newest?type=${type}`,
-    url: `/top/song?type=${type}`,
-
+    // url: `/top/song?type=${type}`,
+    url: `/personalized/newsong`,
     type: 'GET',
   });
 };
-getNewestList();
 /* 歌单 - 歌单分类  */
 export const getPlaylistCatlist = () => {
   return fetchJson({

@@ -1,3 +1,7 @@
+export interface CommonItem {
+  [key: string]: object | null | string | number | boolean;
+}
+
 /* 推荐歌单 */
 export interface PersonalizedItemType {
   alg: string;
@@ -16,18 +20,29 @@ export interface PersonalizedItemType {
 /* banner*/
 export type DiscoverBannerType = {
   encodeId: string;
-  exclusive: false;
+  exclusive: boolean;
   imageUrl: string;
   scm: string;
   typeTitle: string;
   song: null;
   targetId: number;
   titleColor: string;
-} & { [key: string]: null | string | number };
+} & CommonItem;
 
-export interface SitesItem {
-  [key: string]: object | null | string | number | boolean;
-}
+/* 最新音乐*/
+type ArtistsItem = {
+  name: string;
+} & CommonItem;
+export type LatestMusictType = {
+  alg: string;
+  canDislike: boolean;
+  id: string;
+  name: string;
+  picUrl: string;
+  song: { artists: ArtistsItem[] } & CommonItem;
+  trackNumberUpdateTime: number;
+  type: number;
+} & CommonItem;
 
 export interface ComponentMapType {
   [key: string]: {
@@ -97,4 +112,5 @@ export interface SitePageDetailType {
 export interface DiscoversState {
   personalizedList: PersonalizedItemType[]; // 推荐歌单列表
   discoverBannerList: DiscoverBannerType[];
+  latestMusictList: LatestMusictType[]; //最新音乐
 }

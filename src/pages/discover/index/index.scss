@@ -97,6 +97,7 @@ $carouselPrefixCls: 'carousel-component';
       padding: 10px;
       transition: border-color 0.2s, background-color 0.3s, box-shaow 0.3s;
       @extend %typography__vertical;
+      overflow: hidden;
       &::before {
         position: absolute;
         left: 0;
@@ -111,6 +112,7 @@ $carouselPrefixCls: 'carousel-component';
       }
       .shadow {
         transform: scale(1);
+        opacity: 0.01;
       }
       &:hover {
         background-color: var(--hover-color);
@@ -150,7 +152,11 @@ $carouselPrefixCls: 'carousel-component';
         line-height: 24px;
       }
       .song-author {
-        color: var(--text-color-secondary);
+        font-size: 12px;
+        a {
+          color: var(--text-color-secondary);
+          padding: 0 5px;
+        }
       }
     }
   }

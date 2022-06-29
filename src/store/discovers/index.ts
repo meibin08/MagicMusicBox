@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DiscoversState, PersonalizedItemType } from './type';
+import { DiscoversState, PersonalizedItemType, LatestMusictType } from './type';
 import defaultBuilder, {
   fetchPersonalizedList,
   fetchDiscoverBannerList,
+  fetchLatestMusictList,
 } from './thunk';
 
 const placeholderList: PersonalizedItemType[] = Array.from(
@@ -13,7 +14,7 @@ const placeholderList: PersonalizedItemType[] = Array.from(
     copywriter: '',
     highQuality: true,
     id: 181879,
-    name: '中国戏剧最高奖–“梅花奖”',
+    name: ' ',
     picUrl: '',
     playCount: 181879,
     trackCount: 60,
@@ -25,6 +26,7 @@ const placeholderList: PersonalizedItemType[] = Array.from(
 const initialState: DiscoversState = {
   personalizedList: placeholderList,
   discoverBannerList: [],
+  latestMusictList: [],
 };
 
 export const DiscoverSlice = createSlice({
@@ -38,6 +40,11 @@ export const DiscoverSlice = createSlice({
   },
 });
 const { selectedComponentId } = DiscoverSlice.actions;
-export { selectedComponentId, fetchPersonalizedList, fetchDiscoverBannerList };
+export {
+  selectedComponentId,
+  fetchPersonalizedList,
+  fetchDiscoverBannerList,
+  fetchLatestMusictList,
+};
 export const { actions } = DiscoverSlice;
 export default DiscoverSlice.reducer;
