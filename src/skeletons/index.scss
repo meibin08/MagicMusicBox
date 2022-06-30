@@ -16,9 +16,7 @@
   border-radius: 8px;
   @extend %typography__vh;
   z-index: -1;
-  .anticon {
-    font-size: 45px;
-    color: #fff;
+  .anticon {font-size: 45px;color: #fff;
   }
   &.shadow {
     position: absolute;
