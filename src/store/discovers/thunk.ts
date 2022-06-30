@@ -51,7 +51,7 @@ export const fetchLatestMusictList = createAsyncThunk(
 );
 
 // 对应 async thunk 的 Reducers 处理；
-export default (builder) =>{
+export default (builder) => {
   builder.addCase(
     fetchPersonalizedList.fulfilled,
     (state, action: PayloadAction<SitePageDetailType[]>) => {
