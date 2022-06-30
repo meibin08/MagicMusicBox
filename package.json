@@ -65,7 +65,7 @@
     "*.{js,jsx,ts,tsx}": [
       "cross-env NODE_ENV=development eslint --cache"
     ],
-    "src/**/*.{js,jsx}": "eslint",
+    "src/**/*.{ts,tsx,js,jsx}": "eslint",
     "src/**/*.scss": "stylelint",
     "*.json,.{eslintrc,prettierrc}": [
       "prettier --ignore-path .eslintignore --parser json --write"
