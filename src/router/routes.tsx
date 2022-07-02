@@ -1,14 +1,38 @@
-import Home from '../pages/intro/index';
-import Detail from '../pages/detail/index';
-const Routers = [
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';
+import AppMainComponent from '../renderer/coreOutlet';
+import RootComponent from '../renderer/app';
+import AsyncImportLoadable from '@loadable/component';
+import DiscoverRoute from '../pages/discover/route';
+import { SYSTEM_CONFIG } from '@/utils/static';
+import { routerSplicer } from './utils';
 
+const App = AsyncImportLoadable(
+  () => import(/* webpackPrefetch: true */ '../renderer/app')
+);
+
+const AppTest = AsyncImportLoadable(
+  () => import(/* webpackPrefetch: true */ '../renderer/test')
+);
+const defaultHomeUrl = `${SYSTEM_CONFIG.mainUrlPrefix}/discover`; //发现页
+const routes: RouteObject[] = [
   {
-    name: `home2`,
+    path: '/',
+    element: <RootComponent  />,
     children: [
-      { name: 'home2', element: Home, options: { headerShown: false, title: '首页' } },
-      { name: 'detail', element: Detail, options: { title: '详情' } },
+      { index: true, element: <Navigate to={defaultHomeUrl} replace /> },
+      /* 其他没有侧边栏的路由入口*/
+      {
+        path: 'test6',
+        element: <AppTest />,
+      },
     ],
   },
+  {
+    path: '/main',
+    element: <AppMainComponent />,
+    children: [...DiscoverRoute],
+  },
 ];
-
-export default Routers;
+export default routerSplicer(routes);

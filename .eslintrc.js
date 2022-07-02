@@ -20,7 +20,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
     'promise/catch-or-return': 'off',
-    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
     '@typescript-eslint/no-unused-vars': [
       2,
       {
@@ -29,6 +28,7 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
+    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [], "ignoreOnInitialization": false }],
   },
   parserOptions: {
     ecmaVersion: 2020,

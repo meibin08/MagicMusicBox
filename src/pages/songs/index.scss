@@ -1,0 +1,11 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '@/src/style/index';
+$prefixCls: 'songbar-component';
+.#{$prefixCls} {
+  padding: 10px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.3);
+}

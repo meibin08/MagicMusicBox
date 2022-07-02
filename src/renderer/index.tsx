@@ -1,3 +1,3 @@
 import 'antd/dist/antd.less';
-import './App.scss';
+import './app.scss';
 import '../root';

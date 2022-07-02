@@ -19,19 +19,19 @@ const config: ConfigProps[] = [
   {
     title: '发现音乐',
     icon: MailOutlined,
-    url: '/discover',
+    url: '/main/discover',
     uid: uuid(),
   },
   {
     title: '私人FM',
     icon: RightOutlined,
-    url: '/1',
+    url: '/test6',
     uid: uuid(),
   },
   {
     title: '视频',
     icon: SettingOutlined,
-    url: '/1',
+    url: '/main/discover/song-list',
     uid: uuid(),
   },
   {

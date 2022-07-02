@@ -18,7 +18,8 @@ export const INTERFACEMETHOD = [{
 }]
 
 export const SYSTEM_CONFIG = {
-  name: '测试',
-  slogan: '在这里，一切皆有可能～',
-  baseUrlPrefix: '/cubes',
+  name: '魔音盒',
+  slogan: '你想听的，都在这里',
+  baseUrlPrefix: '/',
+  mainUrlPrefix: '/main',
 }
