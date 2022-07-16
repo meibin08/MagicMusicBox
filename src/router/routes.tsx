@@ -20,11 +20,13 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <RootComponent  />,
+    id:`a01`,
     children: [
       { index: true, element: <Navigate to={defaultHomeUrl} replace /> },
       /* 其他没有侧边栏的路由入口*/
       {
         path: 'test6',
+        id:`122`,
         element: <AppTest />,
       },
     ],
@@ -35,4 +37,5 @@ const routes: RouteObject[] = [
     children: [...DiscoverRoute],
   },
 ];
-export default routerSplicer(routes);
+export default routes;
+// export default routerSplicer(routes);

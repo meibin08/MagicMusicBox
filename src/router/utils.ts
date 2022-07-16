@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router-dom';
-
+import { uuid } from '@/utils/tools';
 function splicer(path: string) {
   let args = path;
   function temp(url?: string) {
@@ -22,7 +22,7 @@ export function routerSplicer(routes: RouteObject[], path = ''): RouteObject[] {
   const res: RouteObject[] = [];
   return routes.reduce((result: RouteObject[], route: RouteObject) => {
     const { children = [] } = route;
-    let nextRoute = route;
+    let nextRoute = { ...route, uid: uuid() };
     if (path && nextRoute.path) {
       // nextRoute.path = `${/^\/$/i.test(path) ? '' : path}/${nextRoute.path}`;
       nextRoute.path = `${path}/${nextRoute.path}`.replace(/\/\//g, '/');

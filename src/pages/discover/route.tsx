@@ -29,38 +29,41 @@ const route = [
   {
     path: 'discover', // 个性推荐
     // element: <Outlet />,
+    id:`a010301`,
     children: [
       {
         index: true,
+        id:`a010302`,
         element: <AppDiscoverHome />,
         title: '个性推荐',
         // path: 'discover',
       },
       {
         title: '歌单',
+        id:`a010303`,
         path: 'song-list',
         element: <AppDiscoverSongList />,
       },
-      {
-        title: '主播电台',
-        path: 'anchor-radio',
-        element: <AppDiscoverAnchorRadio />,
-      },
-      {
-        title: '排行榜',
-        path: 'leaderboard',
-        element: <AppDiscoverLeaderboard />,
-      },
-      {
-        title: '歌手',
-        path: 'singer',
-        element: <AppDiscoverSinger />,
-      },
-      {
-        title: '最新音乐',
-        path: 'latest-music',
-        element: <AppDiscoverNewMusic />,
-      },
+      // {
+      //   title: '主播电台',
+      //   path: 'anchor-radio',
+      //   element: <AppDiscoverAnchorRadio />,
+      // },
+      // {
+      //   title: '排行榜',
+      //   path: 'leaderboard',
+      //   element: <AppDiscoverLeaderboard />,
+      // },
+      // {
+      //   title: '歌手',
+      //   path: 'singer',
+      //   element: <AppDiscoverSinger />,
+      // },
+      // {
+      //   title: '最新音乐',
+      //   path: 'latest-music',
+      //   element: <AppDiscoverNewMusic />,
+      // },
     ],
   },
 ];
